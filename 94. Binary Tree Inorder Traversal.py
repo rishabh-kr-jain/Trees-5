@@ -19,4 +19,32 @@ class Solution:
         self.traversal_list.append(root.val)
         self.dfs(root.right)
         return root
+#iterative approach
+#space: O(n)
+#Time: O(n)
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
+        q= []
+        final_list= list()
+        
+        curr= root
+        while len(q) !=0 or curr is not None:
+            
+            while curr is not None:
+                q.append(curr)
+                curr=curr.left
+            curr= q.pop()
+            final_list.append(curr.val)    
+            curr= curr.right
+
+        return final_list
+        
         
